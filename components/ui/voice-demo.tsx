@@ -12,7 +12,7 @@ interface VoiceDemoProps {
 
 export function VoiceDemo({ audioSrc, className }: VoiceDemoProps) {
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  const animationRef = React.useRef<number>();
+  const animationRef = React.useRef<number | undefined>(undefined);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isMuted, setIsMuted] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
