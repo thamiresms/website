@@ -62,7 +62,7 @@ export function Header() {
                       className="rounded-xl px-4 py-3 hover:bg-neutral-50 transition-colors group"
                       onClick={() => setAgentsOpen(false)}
                     >
-                      <div className="font-medium text-neutral-900 group-hover:text-brand-base transition-colors">{agent.name}</div>
+                      <div className="font-medium text-neutral-900 group-hover:text-blue-600 transition-colors">{agent.name}</div>
                       <div className="text-sm text-neutral-500">{agent.desc}</div>
                     </Link>
                   ))}

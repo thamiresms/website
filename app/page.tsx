@@ -4,17 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from "@/components/ui/motion";
-import { cn } from "@/lib/utils";
-import { ArrowRight, Shield, Workflow, Brain, Phone, FileCheck, Scale, Headphones, Globe, BarChart3 } from "lucide-react";
+import { ArrowRight, Shield, Workflow, Brain, Headphones, Globe, BarChart3 } from "lucide-react";
 import { TaylorVoiceDemo } from "@/components/taylor-voice-demo";
+import { AgentsNavigator } from "@/components/agents-navigator";
+import { FeatureCard } from "@/components/feature-card";
 
-function Chip({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
-      {children}
-    </span>
-  );
-}
 
 export default function HomePage() {
   return (
@@ -23,10 +17,10 @@ export default function HomePage() {
       <Section className="pt-16 md:pt-24 lg:pt-32 pb-16 md:pb-24">
         <Container className="text-center">
           <FadeIn>
-            <div className="inline-flex items-center gap-2 rounded-full bg-brand-light/50 px-4 py-1.5 text-sm font-medium text-brand-dark mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-900 mb-6">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-base"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
               </span>
               Now serving US consumer lenders
             </div>
@@ -35,7 +29,7 @@ export default function HomePage() {
             <h1 className="prose-title max-w-4xl mx-auto">
               AI agents built for
               <br className="hidden sm:block" />
-              <span className="text-brand-base">US consumer lenders</span>
+              <span className="text-blue-600">US consumer lenders</span>
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
@@ -92,10 +86,10 @@ export default function HomePage() {
             <FadeIn>
               <div>
                 <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-neutral-900">
-                  Taylor speaks
+                  Taylor speaks banking
                 </h2>
                 <p className="mt-3 text-neutral-500 text-lg">
-                  Hear how Taylor handles a collections call with empathy and compliance.
+                  Hear how Taylor handles customer interactions with empathy and compliance.
                 </p>
               </div>
             </FadeIn>
@@ -115,44 +109,24 @@ export default function HomePage() {
 
             <FadeIn delay={0.3}>
               <div className="space-y-8">
-                <div className="flex gap-4 group">
-                  <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow">
-                    <Headphones className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-neutral-900 text-lg mb-2">Natural, empathetic conversations</h3>
-                    <p className="text-neutral-600 leading-relaxed text-[15px]">
-                      Taylor delivers personalized conversations that feel human. Always available, 
-                      endlessly patient, and able to reason, predict, and act in real-time.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 group">
-                  <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow">
-                    <Globe className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-neutral-900 text-lg mb-2">Connect to your call center ecosystem</h3>
-                    <p className="text-neutral-600 leading-relaxed text-[15px]">
-                      Seamlessly integrate with your existing technology stack, with comprehensive 
-                      summaries and intelligent routing when escalation is required.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 group">
-                  <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow">
-                    <BarChart3 className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-neutral-900 text-lg mb-2">Scale consistent experiences</h3>
-                    <p className="text-neutral-600 leading-relaxed text-[15px]">
-                      Build once and run everywhere, with a continuously-improving, trusted AI agent 
-                      tailored to your brand, goals, and processes.
-                    </p>
-                  </div>
-                </div>
+                <FeatureCard
+                  variant="minimal"
+                  icon={Headphones}
+                  title="Natural, empathetic conversations"
+                  description="Taylor delivers personalized conversations that feel human. Always available, endlessly patient, and able to reason, predict, and act in real-time."
+                />
+                <FeatureCard
+                  variant="minimal"
+                  icon={Globe}
+                  title="Connect to your call center ecosystem"
+                  description="Seamlessly integrate with your existing technology stack, with comprehensive summaries and intelligent routing when escalation is required."
+                />
+                <FeatureCard
+                  variant="minimal"
+                  icon={BarChart3}
+                  title="Scale consistent experiences"
+                  description="Build once and run everywhere, with a continuously-improving, trusted AI agent tailored to your brand, goals, and processes."
+                />
               </div>
             </FadeIn>
           </div>
@@ -190,21 +164,17 @@ export default function HomePage() {
               },
             ].map((card) => (
               <FadeInStaggerItem key={card.title}>
-                <div className="bg-neutral-50 rounded-2xl p-8 h-full">
-                  <div className="h-12 w-12 rounded-xl bg-brand-light flex items-center justify-center mb-6">
-                    <card.icon className="h-6 w-6 text-brand-base" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-neutral-900">{card.title}</h3>
-                  <p className="mt-3 text-neutral-600 leading-relaxed">
-                    {card.body}
-                  </p>
-                </div>
+                <FeatureCard
+                  icon={card.icon}
+                  title={card.title}
+                  description={card.body}
+                />
               </FadeInStaggerItem>
             ))}
           </FadeInStagger>
           <FadeIn delay={0.4}>
             <div className="mt-12 text-center">
-              <Link href="/why-salient" className="inline-flex items-center gap-2 text-brand-base font-medium hover:gap-3 transition-all">
+              <Link href="/why-salient" className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all hover:text-blue-700">
                 Learn why lenders choose Salient <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -216,7 +186,7 @@ export default function HomePage() {
       <Section id="agents" className="bg-neutral-50">
         <Container>
           <FadeIn>
-            <div className="text-center max-w-3xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="prose-head">Four specialist agents, one platform</h2>
               <p className="mt-4 prose-subhead">
                 Each agent is purpose-built for a different part of the lending lifecycle. 
@@ -224,52 +194,9 @@ export default function HomePage() {
               </p>
             </div>
           </FadeIn>
-          <FadeInStagger className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
-            {agentCards.map((agent) => (
-              <FadeInStaggerItem key={agent.name}>
-                <Link href={agent.href} className="block group">
-                  <div className="bg-white rounded-2xl shadow-card border border-neutral-100 h-full card-hover overflow-hidden flex flex-col">
-                    <div className="relative w-full h-32 bg-neutral-50">
-                      <Image
-                        src={agent.image}
-                        alt={`${agent.name} illustration`}
-                        fill
-                        sizes="(min-width: 1024px) 240px, 50vw"
-                        className="object-cover"
-                        priority={false}
-                      />
-                    </div>
-                    <div className="p-6 flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center", agent.bgColor)}>
-                          <agent.icon className={cn("h-5 w-5", agent.iconColor)} />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-neutral-900 group-hover:text-brand-base transition-colors">
-                            {agent.name}
-                          </h3>
-                          <p className="text-xs text-neutral-500">{agent.type}</p>
-                        </div>
-                      </div>
-                    <p className="text-sm text-neutral-600 leading-relaxed mb-4">
-                      {agent.desc}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {agent.chips.slice(0, 3).map((chip) => (
-                        <Chip key={chip}>{chip}</Chip>
-                      ))}
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-neutral-100">
-                      <span className="text-sm font-medium text-brand-base inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Learn more <ArrowRight className="h-3.5 w-3.5" />
-                      </span>
-                    </div>
-                    </div>
-                  </div>
-                </Link>
-              </FadeInStaggerItem>
-            ))}
-          </FadeInStagger>
+          <FadeIn delay={0.2}>
+            <AgentsNavigator />
+          </FadeIn>
         </Container>
       </Section>
 
@@ -292,13 +219,13 @@ export default function HomePage() {
                     "CRM systems",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-2 text-sm text-neutral-700">
-                      <div className="h-1.5 w-1.5 rounded-full bg-brand-accent" />
+                      <div className="h-1.5 w-1.5 rounded-full bg-neutral-400" />
                       {item}
                     </div>
                   ))}
                 </div>
                 <div className="mt-8">
-                  <Link href="/why-salient" className="inline-flex items-center gap-2 text-brand-base font-medium hover:gap-3 transition-all">
+                  <Link href="/why-salient" className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all hover:text-blue-700">
                     See how integration works <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -343,7 +270,7 @@ export default function HomePage() {
             ].map((item) => (
               <FadeInStaggerItem key={item.metric}>
                 <div className="bg-white rounded-2xl p-6 shadow-card border border-neutral-100 text-center">
-                  <div className="text-2xl font-semibold text-brand-base mb-2">{item.metric}</div>
+                  <div className="text-2xl font-semibold text-neutral-900 mb-2">{item.metric}</div>
                   <p className="text-sm text-neutral-600">{item.desc}</p>
                 </div>
               </FadeInStaggerItem>
@@ -351,7 +278,7 @@ export default function HomePage() {
           </FadeInStagger>
           <FadeIn delay={0.4}>
             <div className="mt-12 text-center">
-              <Link href="/customers" className="inline-flex items-center gap-2 text-brand-base font-medium hover:gap-3 transition-all">
+              <Link href="/customers" className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all hover:text-blue-700">
                 View customer stories <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -360,7 +287,7 @@ export default function HomePage() {
       </Section>
 
       {/* Compliance teaser */}
-      <Section className="bg-brand-dark text-white">
+      <Section className="bg-neutral-900 text-white">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
@@ -368,7 +295,7 @@ export default function HomePage() {
                 <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
                   Compliance and governance, built in
                 </h2>
-                <p className="mt-4 text-lg text-white/70 leading-relaxed">
+                <p className="mt-4 text-lg text-neutral-300 leading-relaxed">
                   Salient's agents are configured around the laws and expectations that govern 
                   US consumer lending. Every change is tested before deployment, and we log 
                   what was said, what was done, and why.
@@ -380,18 +307,18 @@ export default function HomePage() {
                     "One-click export of exam-ready evidence packs",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <div className="h-6 w-6 rounded-full bg-brand-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="h-3.5 w-3.5 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="h-3.5 w-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-white/90">{item}</span>
+                      <span className="text-neutral-100">{item}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-10">
                   <Link href="/compliance">
-                    <Button variant="secondary" size="lg" className="bg-white text-brand-dark hover:bg-white/90">
+                    <Button variant="secondary" size="lg" className="bg-white text-neutral-900 hover:bg-neutral-50">
                       Learn about compliance
                     </Button>
                   </Link>
@@ -399,12 +326,12 @@ export default function HomePage() {
               </div>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/10">
+              <div className="bg-white/5 backdrop-blur rounded-2xl p-8 border border-white/10">
                 <div className="space-y-4">
                   {["FDCPA", "UDAAP", "Reg Z", "FCRA", "ECOA / Reg B", "SCRA / MLA"].map((law) => (
                     <div key={law} className="flex items-center justify-between py-3 border-b border-white/10 last:border-0">
-                      <span className="font-medium">{law}</span>
-                      <span className="text-brand-accent text-sm">Supported</span>
+                      <span className="font-medium text-white">{law}</span>
+                      <span className="text-blue-400 text-sm font-medium">Supported</span>
                     </div>
                   ))}
                 </div>
@@ -450,51 +377,3 @@ export default function HomePage() {
     </>
   );
 }
-
-const agentCards = [
-  {
-    name: "Taylor",
-    type: "Customer Service & Collections",
-    href: "/agents/taylor",
-    desc: "Handles inbound and outbound conversations across voice, text, and email—from welcome and verification to payment support and collections.",
-    chips: ["Collections", "Payments", "Hardship"],
-    icon: Phone,
-    bgColor: "bg-blue-50",
-    iconColor: "text-blue-600",
-    image: "/agents/taylor.svg",
-  },
-  {
-    name: "Marshall",
-    type: "Compliance & QA",
-    href: "/agents/marshall",
-    desc: "Monitors 100% of calls, texts, and emails, automatically flagging compliance issues and generating exam-ready evidence.",
-    chips: ["QA", "UDAAP", "Disclosures"],
-    icon: Shield,
-    bgColor: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-    image: "/agents/marshall.svg",
-  },
-  {
-    name: "Alex",
-    type: "Disputes & Chargebacks",
-    href: "/agents/alex",
-    desc: "Runs the full dispute workflow: intake, documentation, reason-code classification, and case prep for human decisioning.",
-    chips: ["Disputes", "Chargebacks", "Case prep"],
-    icon: FileCheck,
-    bgColor: "bg-purple-50",
-    iconColor: "text-purple-600",
-    image: "/agents/alex.svg",
-  },
-  {
-    name: "Flynn",
-    type: "Total Loss & Mitigation",
-    href: "/agents/flynn",
-    desc: "Automates total-loss workflows from salvage intake through settlement negotiation and deficiency handling.",
-    chips: ["Total loss", "Settlement", "Recovery"],
-    icon: Scale,
-    bgColor: "bg-amber-50",
-    iconColor: "text-amber-600",
-    image: "/agents/flynn.svg",
-  },
-];
-
