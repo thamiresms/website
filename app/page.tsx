@@ -206,29 +206,21 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
               <div>
-                <h2 className="prose-head">Works with your existing stack</h2>
+                <div className="inline-block rounded-full bg-neutral-900 px-4 py-1.5 text-sm font-medium text-white mb-6">
+                  Built for Your Stack
+                </div>
+                <h2 className="prose-head">Work with the systems you already use</h2>
                 <p className="mt-4 prose-subhead">
-                  Salient connects to the loan systems, contact centers, and payment providers 
-                  your teams already use—so you can launch pilots without replacing infrastructure.
+                  Salient connects to the loan systems, contact centers, and payment 
+                  providers your teams rely on today – from major US LMS/LOS platforms to 
+                  leading CCaaS solutions and payment rails – so you can launch pilots 
+                  without ripping out existing infrastructure.
                 </p>
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                  {[
-                    "Major LMS/LOS platforms",
-                    "Genesys, NICE, Amazon Connect",
-                    "Payment processors",
-                    "CRM systems",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-sm text-neutral-700">
-                      <div className="h-1.5 w-1.5 rounded-full bg-neutral-400" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8">
-                  <Link href="/why-salient" className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all hover:text-blue-700">
-                    See how integration works <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+                <p className="mt-6 text-sm text-neutral-600">
+                  Examples include common US lending systems, cloud contact 
+                  centers like Genesys, NiCE, and Amazon Connect, and the 
+                  payment processors already wired into your servicing stack.
+                </p>
               </div>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -254,35 +246,41 @@ export default function HomePage() {
         <Container>
           <FadeIn>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="prose-head">Proven impact on lending operations</h2>
-              <p className="mt-4 prose-subhead">
-                Lenders using Salient see measurable improvements across collections, 
-                disputes, compliance, and operational efficiency.
-              </p>
+              <h2 className="prose-head">Proven impact on leading lenders</h2>
             </div>
           </FadeIn>
           <FadeInStagger className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.1}>
             {[
-              { metric: "↑ Net recovery", desc: "Increase collections while reducing manual call volume" },
-              { metric: "↓ Resolution time", desc: "Resolve disputes faster with cleaner documentation" },
-              { metric: "↓ Handle time", desc: "Reduce back-office workload in servicing teams" },
-              { metric: "↑ Exam readiness", desc: "Complete, searchable records for every interaction" },
+              { 
+                metric: "500K+", 
+                title: "daily unique customer interactions",
+                desc: "Reduce manual call volume while improving customer satisfaction" 
+              },
+              { 
+                metric: "50%", 
+                title: "average cost reduction",
+                desc: "Automate manual workflow with cleaner documentation and fewer reworks" 
+              },
+              { 
+                metric: "1:1", 
+                title: "recovery rates matching human",
+                desc: "Automate your loss mitigation processes with no outcome gap" 
+              },
+              { 
+                metric: "100%", 
+                title: "compliance monitoring",
+                desc: "Improve exam readiness with complete, searchable records for every interaction and workflow" 
+              },
             ].map((item) => (
-              <FadeInStaggerItem key={item.metric}>
-                <div className="bg-white rounded-2xl p-6 shadow-card border border-neutral-100 text-center">
-                  <div className="text-2xl font-semibold text-neutral-900 mb-2">{item.metric}</div>
-                  <p className="text-sm text-neutral-600">{item.desc}</p>
+              <FadeInStaggerItem key={item.metric} className="flex">
+                <div className="bg-white rounded-2xl p-8 shadow-card border border-neutral-100 text-center flex flex-col w-full">
+                  <div className="text-5xl md:text-6xl font-bold text-neutral-900 mb-4">{item.metric}</div>
+                  <div className="text-base font-bold text-neutral-900 mb-4 leading-tight">{item.title}</div>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{item.desc}</p>
                 </div>
               </FadeInStaggerItem>
             ))}
           </FadeInStagger>
-          <FadeIn delay={0.4}>
-            <div className="mt-12 text-center">
-              <Link href="/customers" className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all hover:text-blue-700">
-                View customer stories <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </FadeIn>
         </Container>
       </Section>
 
@@ -292,13 +290,18 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
               <div>
+                <div className="inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white mb-6">
+                  Trust & Security
+                </div>
                 <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
                   Compliance and governance, built in
                 </h2>
                 <p className="mt-4 text-lg text-neutral-300 leading-relaxed">
-                  Salient's agents are configured around the laws and expectations that govern 
-                  US consumer lending. Every change is tested before deployment, and we log 
-                  what was said, what was done, and why.
+                  Salient's agents are configured around the major laws and expectations that govern 
+                  US consumer lending – and every change to policies or prompts is 
+                  run through automated tests before it goes live. We log what was said, what was 
+                  done, and why, so you can answer tough questions from federal and state 
+                  regulators.
                 </p>
                 <ul className="mt-8 space-y-4">
                   {[
