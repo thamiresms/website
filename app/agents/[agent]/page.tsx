@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/section";
 import { FadeIn, FadeInStagger, FadeInStaggerItem } from "@/components/ui/motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight, Phone, Shield, FileCheck, Scale, CheckCircle2 } from "lucide-react";
 
@@ -16,6 +17,7 @@ const AGENTS: Record<
     tagline: string;
     description: string;
     icon: typeof Phone;
+    image: string;
     color: { bg: string; text: string; light: string };
     capabilities: { title: string; desc: string }[];
     workflow: { step: string; title: string; desc: string }[];
@@ -30,6 +32,7 @@ const AGENTS: Record<
     description:
       "Taylor handles inbound and outbound conversations across voice, text, and email—covering everything from welcome and verification to payment support, hardship discussions, and collections.",
     icon: Phone,
+    image: "/agents/Taylor.png",
     color: { bg: "bg-blue-50", text: "text-blue-600", light: "bg-blue-100" },
     capabilities: [
       { title: "Welcome & verification", desc: "Authenticate borrowers and manage consent and communication preferences" },
@@ -65,6 +68,7 @@ const AGENTS: Record<
     description:
       "Marshall monitors every call, text, and email—automatically flagging potential compliance issues and feeding QA scorecards, coaching recommendations, and exam-ready evidence.",
     icon: Shield,
+    image: "/agents/Marshall.png",
     color: { bg: "bg-emerald-50", text: "text-emerald-600", light: "bg-emerald-100" },
     capabilities: [
       { title: "Full-coverage QA", desc: "Review 100% of interactions instead of random sampling" },
@@ -100,6 +104,7 @@ const AGENTS: Record<
     description:
       "Alex runs the full dispute and chargeback workflow: structured intake, document collection, reason-code classification, and case preparation—so your team reviews cases instead of re-typing them.",
     icon: FileCheck,
+    image: "/agents/Alex.png",
     color: { bg: "bg-purple-50", text: "text-purple-600", light: "bg-purple-100" },
     capabilities: [
       { title: "Structured intake", desc: "Guide borrowers through dispute details with smart questioning" },
@@ -135,6 +140,7 @@ const AGENTS: Record<
     description:
       "Flynn represents your interests in total-loss workflows—automating intake from salvage and valuation systems, managing settlement negotiations, and handling deficiency and recovery workflows.",
     icon: Scale,
+    image: "/agents/Flynn.png",
     color: { bg: "bg-amber-50", text: "text-amber-600", light: "bg-amber-100" },
     capabilities: [
       { title: "Valuation intake", desc: "Ingest data from IAAI, Copart, CCC Valuation, and other sources" },
@@ -195,33 +201,55 @@ export default function AgentPage({
 
   return (
     <>
-      {/* Hero */}
-      <Section className="pt-16 md:pt-24 lg:pt-32 pb-16">
+      {/* Hero with Agent Photo */}
+      <Section className="pt-16 md:pt-24 pb-16">
         <Container>
           <FadeIn>
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`h-14 w-14 rounded-2xl ${data.color.bg} flex items-center justify-center`}>
-                  <Icon className={`h-7 w-7 ${data.color.text}`} />
+            <div className="bg-white rounded-2xl shadow-xl border border-neutral-100 overflow-hidden">
+              <div className="grid md:grid-cols-[380px,1fr] lg:grid-cols-[480px,1fr]">
+                {/* Agent Photo */}
+                <div className="relative bg-gradient-to-b from-[#f5f1e8] to-[#ebe4d5] h-[400px] md:h-auto min-h-[500px]">
+                  <div className="absolute inset-0 flex items-end justify-center">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={data.image}
+                        alt={`${data.title} portrait`}
+                        fill
+                        className="object-cover object-top"
+                        priority
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-sm font-medium text-neutral-500">Salient Agent</div>
-                  <h1 className="text-2xl font-semibold text-neutral-900">{data.title}</h1>
+
+                {/* Agent Info */}
+                <div className="p-8 md:p-10 lg:p-12 flex flex-col">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`h-14 w-14 rounded-2xl ${data.color.bg} flex items-center justify-center flex-shrink-0`}>
+                      <Icon className={`h-7 w-7 ${data.color.text}`} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-neutral-500">Salient Agent</div>
+                      <h1 className="text-2xl font-semibold text-neutral-900">{data.title}</h1>
+                    </div>
+                  </div>
+                  <p className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-6">
+                    {data.type}
+                  </p>
+                  <p className="text-xl text-neutral-600 leading-relaxed mb-4">
+                    {data.tagline}
+                  </p>
+                  <p className="text-base text-neutral-600 leading-relaxed mb-8">
+                    {data.description}
+                  </p>
+                  <div className="mt-auto">
+                    <Link href="/pilot">
+                      <Button size="lg" className="gap-2">
+                        Start a {data.title} pilot <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <p className="prose-title">{data.type}</p>
-              <p className="mt-6 text-xl text-neutral-600 leading-relaxed">
-                {data.tagline}
-              </p>
-              <p className="mt-4 prose-subhead">
-                {data.description}
-              </p>
-              <div className="mt-10">
-                <Link href="/pilot">
-                  <Button size="lg" className="gap-2">
-                    Start a {data.title} pilot <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
               </div>
             </div>
           </FadeIn>

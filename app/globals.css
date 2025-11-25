@@ -63,3 +63,21 @@ input, select, textarea {
   background-color: #dbeafe;
   color: #1e40af;
 }
+
+/* Logo scroll animation */
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroll {
+  animation: logo-scroll 40s linear infinite;
+}
+
+.logo-scroll:hover {
+  animation-play-state: paused;
+}

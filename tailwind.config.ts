@@ -56,11 +56,16 @@ const config: Config = {
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" }
+        },
+        "scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-100% / 3))" }
         }
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out both",
-        "fade-in-up": "fade-in-up 0.6s ease-out both"
+        "fade-in-up": "fade-in-up 0.6s ease-out both",
+        "scroll": "scroll 40s linear infinite"
       }
     },
     fontFamily: {

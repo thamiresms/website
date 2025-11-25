@@ -263,7 +263,7 @@ export default function HomePage() {
               },
               { 
                 metric: "1:1", 
-                title: "recovery rates matching human",
+                title: "recovery rates matching human performance",
                 desc: "Automate your loss mitigation processes with no outcome gap" 
               },
               { 
